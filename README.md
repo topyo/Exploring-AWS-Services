@@ -88,14 +88,93 @@ Amazon Elastic Compute Cloud (Amazon EC2) offers the broadest and deepest comput
 ## 1. launch the Lab Environment
 Tasks:
 1.  Login to AWS Management Console
-2. Click on the AWS Management Console
+2. Search for EC2 in the management console
+
+Make sure you are in US East (N. Virginia) us-east-1 Region.
+![](Images/AWS13.png)
 
 
 ## 2.  Launching an EC2 Instance
+![](Images/AWS14.png)
+![](Images/AWS15.png)
+![](Images/AWS16.png)
+Key Pair : Create a new key pair, enter EC2Key, click on , and store it on your local machine.
+![](Images/AWS17.png)
+Launch Status: THE instance is now launching, Click on the instance ID and wait for complete initialization of instance till status change to Running.
+![](Images/AWS17.png)
+
+3. SSH into EC2
+
+You can SSH into the EC2 instance by following the steps
+<a href="https://play.whizlabs.com/site/task_support/ssh-into-ec-instance"> here </a>
 
 
+I will SSH into EC2 using Microsoft  windows and below are the steps I completed
 
-3. SSH into EC2 Instance
-4. Install an Apache Server
+1. Downloaded putty and putty gen from
+
+<a href="https://putty.org/"> here!</a>
+2. Converted key pair .pem to .ppk:
+  a. Opened  puttygen
+  b. Clicked on Load
+  c. Clicked  on All files to show the .pem file and selected the .pem keypair file.
+ I recieved a success message that the conversion was successful.
+
+![](Images/AWS19.png)
+
+d. Clicked on the Save Private Key button and enter the keypairname and saved.
+The keypairname.ppk file was  saved to my local machine.
+![](Images/AWS20.png)
+![](Images/AWS21.png)
+![](Images/AWS22.png)
+![](Images/AWS23.png)
+![](Images/AWS24.png)
+
+## 4.Install an Apache Server
+To install an Apache Server, the following steps was completed
+a. Switch to root user: sudo su
+b. Run an updates using the following command:
+yum -y update
+c. Once updates are completed, I installed and ran apache server with the command:
+ yum install httpd
+When prompted, typed "Y" to confirm. Started the web server with the command
+systemctl start httpd
+and enabled the httpd using the command
+systemctl enable httpd
+ Checked the webserver status with:
+ systemctl status httpd
+
+![](Images/AWS25.png)
+![](Images/AWS26.png)
+![](Images/AWS27.png)
+![](Images/AWS28.png)
+
+
+You can test that your web server is properly installed and started by entering the public IP address of your EC2 instance in the address bar of a web browser. If your web server is running, then you see the Apache test page. If you don't see the Apache test page, then verify whether you followed the above steps properly and check your inbound rules for the security group that you created
+
+![](Images/AWS30.png)
+![](Images/AWS31.png)
+
 5. Create and publish page
-6. Validation of the lab
+
+Navigate to the HTML folder where we will create an HTML page to test.
+ cd /var/www/html/
+Create a sample test.html file using nano editor:
+nano test.html
+
+3. Enter sample HTML content provided below in the file and save the file with Ctrl+X and press "y" to confirm the save. Then press "Enter" to confirm the file name.
+<HTML> Welcome to My Quad Page! We are Live!!! </HTML>
+![](Images/AWS29.png)
+4. Restart the webserver by using the following command:
+ systemctl start httpd
+5. Now enter the file name after the public IP which you got when you created the ec2 instance in the browser, and you can see your HTML content.
+ Sample URL: http://52.90.196.54/test.html
+
+![](Images/AWS32.png)
+6. If you can see the above text in the browser, then you have successfully completed the Project
+
+## Allocating Elastic IP and Associating it to EC2 Instance
+
+![](Images/AWS33.png)
+
+Thanks for viewing this page!
