@@ -1,4 +1,4 @@
-# Exploring-AWS-Services
+# Exploring-AWS-EC2
 This project aims at documenting the capabilities of different AWS Services (Architecting in the Cloud)
 Introduction
 
